@@ -7,6 +7,7 @@ Contents:
 - [Merge Sort](#merge-sort)
 - [KMP String Search](#knuth-morris-pratt-algorithmkmp)
 
+[top](#contents)
 ## Binary Search
 ```c++
 int binarySearch (vector<int> v, int key) {
