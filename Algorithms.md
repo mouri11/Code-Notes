@@ -7,8 +7,9 @@ Contents:
 - [Merge Sort](#merge-sort)
 - [KMP String Search](#knuth-morris-pratt-algorithmkmp)
 
-[top](#contents)
+
 ## Binary Search
+[Back to top](#contents)
 ```c++
 int binarySearch (vector<int> v, int key) {
 	int low = 0;
@@ -26,6 +27,8 @@ Time Complexity: T(n) = T(n / 2) + c => O(logn)
 
 
 ## Quick Sort
+[Back to top](#contents)
+
 O(1) extra space (in-place sort). Not stable.
 ```c++
 int partition (vector<int> &v, int low, int high) {
@@ -57,6 +60,8 @@ Best and Avg. Case: O(n logn)
 
 
 ## Merge Sort
+[Back to top](#contents)
+
 Divide and Conquer. O(n) extra space. Stable.
 ```c++
 void merge (vector<int> &v, int low, int mid, int high) {
@@ -92,6 +97,8 @@ Time Complexity: T(n) = 2T(n/2) + Theta(n) => O(n logn) in all cases
 
 
 ## Knuth-Morris-Pratt Algorithm(KMP)
+[Back to top](#contents)
+
 The KMP matching algorithm uses degenerating property (pattern having same sub-patterns appearing more than once in the pattern) of the pattern and improves the worst case complexity to O(n). The basic idea behind KMP’s algorithm is: whenever we detect a mismatch (after some matches), we already know some of the characters in the text of the next window. We take advantage of this information to avoid matching the characters that we know will anyway match.
 
 
