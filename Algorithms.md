@@ -1,6 +1,6 @@
 # Algorithms
 
-Contents:
+### Contents:
 
 - [Binary Search](#binary-search)
 - [Quick Sort](#quick-sort)
