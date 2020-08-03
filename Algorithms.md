@@ -5,7 +5,7 @@ Contents:
 - [Binary Search](#binary-search)
 - [Quick Sort](#quick-sort)
 - [Merge Sort](#merge-sort)
-- [KMP String Search](#knuth-morris-pratt-algorithm(kmp))
+- [KMP String Search](#knuth-morris-pratt-algorithmkmp)
 
 ## Binary Search
 ```c++
