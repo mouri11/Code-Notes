@@ -5,9 +5,10 @@ Contents:
 - [Binary Search](#binary-search)
 - [Quick Sort](#quick-sort)
 - [Merge Sort](#merge-sort)
+- [KMP String Search](#knuth-morris-pratt-algorithm(kmp))
 
 ## Binary Search
-```
+```c++
 int binarySearch (vector<int> v, int key) {
 	int low = 0;
 	int high = v.size() - 1;
@@ -25,7 +26,7 @@ Time Complexity: T(n) = T(n / 2) + c => O(logn)
 
 ## Quick Sort
 O(1) extra space (in-place sort). Not stable.
-```
+```c++
 int partition (vector<int> &v, int low, int high) {
 	int pivot = v[high];
 	int i = (low - 1);
@@ -56,7 +57,7 @@ Best and Avg. Case: O(n logn)
 
 ## Merge Sort
 Divide and Conquer. O(n) extra space. Stable.
-```
+```c++
 void merge (vector<int> &v, int low, int mid, int high) {
 	vector<int> left, right;
 	
@@ -187,7 +188,7 @@ txt[i] and pat[j] match, do i++ and j++
 
 We continue this way...
 
-```
+```c++
 void computeLPS(string pattern, int m, vector<int> &lps) {
 	int len = 0;
 	
