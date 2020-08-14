@@ -6,6 +6,7 @@
 - [Quick Sort](#quick-sort)
 - [Merge Sort](#merge-sort)
 - [KMP String Search](#knuth-morris-pratt-algorithmkmp)
+- [Rabin-Karp String Search](#rabin-karp-string-search-algorithm)
 
 
 ## Binary Search
@@ -232,5 +233,56 @@ void KMPSearch(string text, string pattern) {
 			else i++;
 		}
 	}
+}
+```
+
+## Rabin-Karp String Search Algorithm
+[Back to top](#contents)
+
+The idea is to calculate a certain hash value of the pattern(s). Then, calculate the hash of every window in text of size pattern.size. If the hashes match, check if the characters match and return the index if they do. Worst case: O(mn), m = patt.size, n = txt.size. Avg case: O(m + n).
+
+```
+#include <bits/stdc++.h>
+using namespace std;
+
+int getHash(string pat,int prime) {
+	int power = 1,hash = 0;
+	for (int i = 0;i < pat.size();i++) {
+		hash += pat[i] * power;
+		power *= prime;
+	}
+	return hash;
+}
+
+void findSubstr(string pat, string txt) {
+	int prime = 101;
+	int pHash = getHash(pat,prime);
+	int tHash = getHash(txt.substr(0,pat.size()),prime);
+	
+	if (pHash == tHash) {
+		int i;
+		for (i = 0;i < pat.size();i++) {
+			if (pat[i] != txt[i]) break;
+		}
+		if (i == pat.size()) cout<<"Pattern found at 0\n";
+	}
+	int prod = pow(prime, pat.size() - 1);
+	for (int i = 1;i <= txt.size() - pat.size();i++) {
+		tHash -= txt[i - 1];
+		tHash /= prime;
+		tHash += txt[i + pat.size() - 1] * prod;
+		if (pHash == tHash) {
+			int j = 0;
+			for (;j < pat.size();j++) {
+				if (pat[j] != txt[i + j]) break;
+			}
+			if (j == pat.size()) cout<<"Pattern found at "<<i<<"\n";
+		}
+	}
+}
+
+int main() {
+	findSubstr("geek","geeksforgeeks");
+	return 0;
 }
 ```
