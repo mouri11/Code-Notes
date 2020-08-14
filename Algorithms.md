@@ -241,10 +241,7 @@ void KMPSearch(string text, string pattern) {
 
 The idea is to calculate a certain hash value of the pattern(s). Then, calculate the hash of every window in text of size pattern.size. If the hashes match, check if the characters match and return the index if they do. Worst case: O(mn), m = patt.size, n = txt.size. Avg case: O(m + n).
 
-```
-#include <bits/stdc++.h>
-using namespace std;
-
+```c++
 int getHash(string pat,int prime) {
 	int power = 1,hash = 0;
 	for (int i = 0;i < pat.size();i++) {
@@ -279,10 +276,5 @@ void findSubstr(string pat, string txt) {
 			if (j == pat.size()) cout<<"Pattern found at "<<i<<"\n";
 		}
 	}
-}
-
-int main() {
-	findSubstr("geek","geeksforgeeks");
-	return 0;
 }
 ```
