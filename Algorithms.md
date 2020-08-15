@@ -7,6 +7,7 @@
 - [Merge Sort](#merge-sort)
 - [KMP String Search](#knuth-morris-pratt-algorithmkmp)
 - [Rabin-Karp String Search](#rabin-karp-string-search-algorithm)
+- [Z String Search](#z-string-search-algorithm)
 
 
 ## Binary Search
@@ -275,6 +276,44 @@ void findSubstr(string pat, string txt) {
 			}
 			if (j == pat.size()) cout<<"Pattern found at "<<i<<"\n";
 		}
+	}
+}
+```
+
+## Z String Search Algorithm
+[Back to top](#contents)
+
+Linear time String search, like KMP. Avg. case: O(m + n), m = pat.size, n = txt.size.
+
+```c++
+void Zlist(string s, vector<int> &Z) {
+	int right = 0, left = 0,k;
+	for (k = 1;k < s.size();k++) {
+		if (k > right) {
+			left = right = k;
+			while (right < s.size() && s[right] == s[right - left]) right++;
+			Z[k] = right - left;
+			right--;
+		}
+		else {
+			int k1 = k - left;
+			if (Z[k1] < right - k + 1) Z[k] = Z[k1];
+			else {
+				left = k;
+				while (right < s.size() && s[right] == s[right - left]) right++;
+				Z[k] = right - left;
+				right--;
+			}
+		}
+	}
+}
+ 
+void findSubstr(string pat, string txt) {
+	string temp = pat + "$" + txt;
+	vector<int> Z(temp.size(),0);
+	Zlist(temp,Z);
+	for (int i = 0;i < Z.size();i++) {
+		if (Z[i] == pat.size()) cout<<"Pattern found at "<<i - pat.size() - 1<<"\n";
 	}
 }
 ```
